@@ -35,20 +35,25 @@ extension ContentView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                YouTubePlayerView(
-                    self.youTubePlayer,
-                    placeholderOverlay: {
-                        ProgressView()
+                VStack {
+                    YouTubePlayerView(
+                        self.youTubePlayer,
+                        placeholderOverlay: {
+                            ProgressView()
+                        }
+                    )
+                    .frame(height: 220)
+                    .background(Color(.systemBackground))
+                    .shadow(
+                        color: .black.opacity(0.1),
+                        radius: 46,
+                        x: 0,
+                        y: 15
+                    )
+                    Button("Get CC") {
+                        self.youTubePlayer.getCaptionsTrack { print("Track: \($0)")}
                     }
-                )
-                .frame(height: 220)
-                .background(Color(.systemBackground))
-                .shadow(
-                    color: .black.opacity(0.1),
-                    radius: 46,
-                    x: 0,
-                    y: 15
-                )
+                }
                 VStack(spacing: 20) {
                     ForEach(self.wwdcKeynotes) { wwdcKeynote in
                         Button(

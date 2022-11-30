@@ -15,6 +15,7 @@ public typealias YouTubePlayerAPI = YouTubePlayerConfigurationAPI
     & YouTubePlayerPlaybackRateAPI
     & YouTubePlayerPlaybackAPI
     & YouTubePlayerVideoInformationAPI
+    & YouTubePlayerOptionAPI
 
 // MARK: - YouTubePlayerConfigurationAPI
 
@@ -313,3 +314,16 @@ public protocol YouTubePlayerVideoInformationAPI: AnyObject {
     )
     
 }
+
+// MARK: - YouTubePlayerOptionAPI
+
+public protocol YouTubePlayerOptionAPI: AnyObject {
+
+    /// Retrieve the YouTubePlayer closed caption language
+    /// - Parameter completion: The completion closure
+    func getCaptionsTrack(
+        completion: @escaping (Result<YouTubePlayer.OptionCaptionsTrack, YouTubePlayerAPIError>) -> Void
+    )
+
+}
+

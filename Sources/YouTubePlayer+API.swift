@@ -480,3 +480,19 @@ extension YouTubePlayer: YouTubePlayerVideoInformationAPI {
     }
     
 }
+
+// MARK: - YouTubePlayerOptionAPI
+
+extension YouTubePlayer: YouTubePlayerOptionAPI {
+
+    /// Retrieve the YouTubePlayer closed caption language
+    /// - Parameter completion: The completion closure
+    public func getCaptionsTrack(
+        completion: @escaping (Result<YouTubePlayer.OptionCaptionsTrack, YouTubePlayerAPIError>) -> Void
+    ) {
+        self.onAPIReady { api in
+            api.getCaptionsTrack(completion: completion)
+        }
+    }
+
+}
